@@ -1,0 +1,71 @@
+.titulo{
+    background-color: black;
+    color: white;
+    border-radius: .625rem;
+}
+.imagenProducto{
+    width: 12.5rem;
+    height: 12.5rem;
+}
+
+.card{
+    display: flex;
+    align-items: center;
+    margin: .9375rem;
+    transition: 0.2s;
+    height: 25rem;
+    box-shadow: 10px 10px 5px rgb(88, 88, 88);
+}
+
+.card:hover{
+    transform: scale(1.1);
+    box-shadow: 15px 15px 10px rgb(102, 101, 101);
+}
+
+.estiloBoton{
+    color: white;
+    border-radius: .9375rem;
+    background-color: black;
+    transition: 0.2s;
+}
+
+.estiloBoton:hover{
+    background-color: grey;
+}
+
+.estiloBotonEliminar{
+    background-color: red;
+    color: white;
+    border-radius: .9375rem;
+    transition: 0.2s;
+}
+
+.estiloBotonEliminar:hover{
+    background-color: rgb(121, 0, 0);
+}
+
+.estiloBotonesCarrito{
+    width: 130px;
+    height: 40px;
+    border-radius: .9375rem;
+    color: white;
+    background-color: rgb(117, 194, 220);
+    margin-right: .3125rem;
+    margin-bottom: .3125rem;
+    transition: 0.2s;
+}
+
+.estiloBotonesCarrito:hover{
+    transform: scale(1.1);
+    background-color: rgb(70, 161, 191);
+}
+
+.instruccionesCarrito{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bodyCard{
+    border-top: 1px solid black;
+}
