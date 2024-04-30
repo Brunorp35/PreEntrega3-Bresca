@@ -1,6 +1,16 @@
+html{
+    background: linear-gradient(to bottom, rgb(0, 0, 0), rgb(23, 23, 23));
+}
+
+body{
+    padding-top: .3125rem;
+    margin-top: .3125rem;
+}
+
 .titulo{
     background-color: black;
     color: white;
+    width: 100%;
     border-radius: .625rem;
 }
 .imagenProducto{
@@ -68,7 +78,14 @@
 
 .bodyCard{
     border-top: 1px solid black;
-    /* background: linear-gradient(to right, #d61f1f, #f2920b) */
+}
+
+.carrito-estilos{
+    padding-bottom: 1.5625rem;   
+}
+
+#contenedorProductos{
+    padding-bottom: 1.25rem;
 }
 
 

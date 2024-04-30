@@ -131,6 +131,15 @@ const eliminarDelCarrito = (id) =>{
 const limpiarCarrito = document.getElementById("limpiarCarrito");
 limpiarCarrito.addEventListener("click", ()=>{
     vaciarCarrito();
+    Toastify({
+        text: "Se eliminaron todos los productos del Carrito :(",
+        duration: 3000,
+        gravity: 'bottom',
+        position: 'right',
+        style: {
+            background: "linear-gradient(to right, #d61f1f, #f2920b)"
+        }
+    }).showToast();
 })
 
 const vaciarCarrito = () =>{
