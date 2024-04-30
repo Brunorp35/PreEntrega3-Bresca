@@ -20,6 +20,8 @@ const productos = [mouse, teclado, auriculares, parlantes, monitor, silla, gabin
 
 let carrito = [];
 
+const paginaDolar = "https://criptoya.com/api/dolar"
+
 if (localStorage.getItem("carrito")){
     carrito = JSON.parse(localStorage.getItem("carrito"));
 }
@@ -46,6 +48,15 @@ const mostrarProductos = () => {
         const botonAgregar = document.getElementById(`boton${producto.id}`);
         botonAgregar.addEventListener("click", ()=>{
             agregarCarrito(producto.id);
+            Toastify({
+                text: "El producto se agregó al carrito!",
+                duration: 3000,
+                gravity: 'bottom',
+                position: 'right',
+                style: {
+                    background: "linear-gradient(to right, #00b09b, #96c93d)"
+                }
+            }).showToast();
         })
     })
 }
@@ -61,6 +72,7 @@ const agregarCarrito = (id) => {
     mostrarCarrito();
     localStorage.setItem("carrito", JSON.stringify(carrito));
     calcularTotalCompra();
+    calcularTotalCompraPesos();
 }     
 
 const contenedorCarrito = document.getElementById("containerCarrito");
@@ -92,10 +104,20 @@ const mostrarCarrito = () =>{
         
         const botonEliminar = document.getElementById(`eliminar${producto.id}`);
         botonEliminar.addEventListener("click", ()=>{
-            eliminarDelCarrito(producto.id)
+            eliminarDelCarrito(producto.id);
+            Toastify({
+                text: "El producto se eliminó del carrito :(",
+                duration: 3000,
+                gravity: 'bottom',
+                position: 'right',
+                style: {
+                    background: "linear-gradient(to right, #d61f1f, #f2920b)"
+                }
+            }).showToast();
         })
     })
     calcularTotalCompra();
+    calcularTotalCompraPesos();
 }
 
 const eliminarDelCarrito = (id) =>{
@@ -125,5 +147,16 @@ const calcularTotalCompra = () =>{
         total += producto.precio * producto.cantidad;
     })
 
-    totalCompra.innerHTML = ` USD${total}`
+    totalCompra.innerHTML = `${total}`
+}
+
+const totalCompraPesos = document.getElementById("totalCompraPesos");
+const calcularTotalCompraPesos = () => {
+    fetch(paginaDolar).then(response => response.json()).then(({oficial}) =>{
+        let totalPesos = 0;
+        carrito.forEach(producto =>{
+            totalPesos += (producto.precio * producto.cantidad) * oficial.price;
+        })
+        totalCompraPesos.innerHTML = `${totalPesos}`
+    })
 }
